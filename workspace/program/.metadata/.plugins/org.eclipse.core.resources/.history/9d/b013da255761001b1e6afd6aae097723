@@ -1,0 +1,110 @@
+package com.cybage.dao;
+
+ 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.cybage.exception.EmployeeException;
+import com.cybage.model.Employee;
+import com.cybage.util.DBUtil;
+
+ 
+
+public class EmployeeDaoImpl implements EmployeeDao {
+    
+    @Override
+    public void add(Employee emp, String type) throws SQLException,Exception{    
+        Connection con = DBUtil.getCon();
+
+        PreparedStatement ps = con.prepareStatement("insert into employee values (? , ? , ? , ? , ?)");
+        ps.setInt(1, emp.getId());
+        ps.setString(2, emp.getName());
+        ps.setString(3, emp.getId());
+        ps.setInt(4, emp.getId());
+        ps.setString(5, type);
+        
+        if(!ps.execute()) {
+            System.out.println("Employee added successfully...");
+        }else {
+            System.out.println("Could not add employee in database...");
+        }
+        ps.close();
+        con.close();        
+    }
+
+ 
+
+    @Override
+    public void delete(int id) throws EmployeeException, SQLException, Exception{
+    	Connection con = DBUtil.getCon();
+    	
+    	String query = "delete from employee where emp_id=?";
+    	PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id);
+        int result = ps.executeUpdate();
+        
+        if(!ps.execute()) {
+            System.out.println("Employee " + result + " deleted successfully...");
+        }else {
+            System.out.println("No employee found");
+        }
+        ps.close();
+        con.close(); 
+    }
+
+ 
+
+    @Override
+    public void update(int id, Employee emp, String type) throws EmployeeException, SQLException, Exception{
+    	Connection con = DBUtil.getCon();
+    	
+    	String query = "update employee set emp_id=?, emp_name=?, emp_address=?, emp_salary=?, emp_type=?";
+    	PreparedStatement ps = con.prepareStatement(query);
+    	ps.setInt(1, emp.getId());
+        ps.setString(2, emp.getId());
+        ps.setString(3, emp.getId());
+        ps.setInt(4, emp.getId());
+        ps.setString(5, type);
+        int result = ps.executeUpdate();
+        
+    }
+
+ 
+
+    @Override
+    public void displayAllEmployee() throws SQLException,Exception{
+    	 Connection con = DBUtil.getCon(); 
+
+         Statement statement = con.createStatement();
+         ResultSet result = statement.executeQuery("select * from employee");
+         
+         while(result.next()) {
+             System.out.println("Employee Id: " + result.getInt(1) + "\nEmployee Name: "+ result.getString(2) + "\nEmployee Address: "+ result.getString(3) + "\nEmployee Salary: "+ result.getInt(4) + "\nEmployee Type: "+ result.getString(5) + "\n");
+         }
+         
+         result.close();
+         statement.close();
+         con.close();
+    }
+    
+    @Override
+    public void displayWithId(int id) throws SQLException,Exception{
+    	Connection con = DBUtil.getCon(); 
+    	String query = "select * from employee where emp_id=?";
+    	
+    	PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id);
+        ResultSet result = ps.executeQuery();
+        result.next();
+        System.out.println("Employee Id: " + result.getInt(1) + "\nEmployee Name: "+ result.getString(2) + "\nEmployee Address: "+ result.getString(3) + "\nEmployee Salary: "+ result.getInt(4) + "\nEmployee Type: "+ result.getString(5) + "\n");
+    
+        ps.close();
+        con.close();
+        result.close();
+    }
+ 
+
+}

@@ -1,0 +1,7 @@
+package com.cybage;
+
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+
+public class SimpleJPA extends SimpleJpaRepository<T, ID>{
+
+}

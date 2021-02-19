@@ -1,0 +1,25 @@
+package com.cybage;
+
+public class BankAccount {
+	int balance;
+	int rof = 0.035;
+
+	public BankAccount(int balance) {
+		super();
+		this.balance = balance;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [balance=" + balance + "]";
+	}
+	
+}

@@ -1,0 +1,43 @@
+package com.example;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Employee {
+	
+	@Id				//This will be primary key in database
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int empId;
+	private String empName;
+	
+	@OneToOne(fetch = FetchType.LAZY,
+			optional = false,
+			cascade = CascadeType.ALL,
+			mappedBy = "employee"
+			)
+	private Account account;
+
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(int empId, String empName, Account account) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+		this.account = account;
+	}
+	public Employee(String empName, Account account) {
+		super();
+		this.empName = empName;
+		this.account = account;
+	}
+	
+}

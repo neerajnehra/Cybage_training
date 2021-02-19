@@ -1,0 +1,12 @@
+package com.cybage;
+
+public class Main {
+	public static void main(String[] args) {
+		Circle c = new Circle();
+		Rectangle r = new Rectangle();
+		Triangle t = new Triangle();
+		System.out.println("Area of circle: " + c.calculateArea(5));
+		System.out.println("Area of rectangle: " + r.calculateArea(2,3));
+		System.out.println("Area of triangle: " + t.calculateArea(5,10));
+	}
+}

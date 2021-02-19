@@ -1,0 +1,37 @@
+package com.cybage;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class ImageUsage {
+	public void addImage() throws Exception{
+		//1.get connection
+		Connection con = DbUtil.getCon();
+		
+		PreparedStatement ps = con.prepareStatement("insert into values(?, /)");
+		
+		FileInputStream input = new FileInputStream("d:\\image.jpeg");
+		
+		ps.setString(1, "profilepic");
+        ps.setBinaryStream(2, input);
+        
+        ps.executeUpdate();
+        
+        ps.close();
+        con.close();    
+    }
+    
+    public void getImage() throws Exception{
+    	Connection con = DbUtil.getCon();
+    	
+    	PreparedStatement ps = con.prepareStatement("insert into values(?, /)");
+		
+    	ResultSet rs = ps.executeQuery();
+    	if(rs.next()) {
+    		rs.getBlob(2);
+    		image.getBytes(1, image.length())
+    	}
+    }
+}

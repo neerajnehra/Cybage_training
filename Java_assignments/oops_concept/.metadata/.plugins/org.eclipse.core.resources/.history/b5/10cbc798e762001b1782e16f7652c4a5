@@ -1,0 +1,15 @@
+package com.cybage;
+
+public class Current extends BankAccount{
+	double rateOfInterest = 0;
+	
+	public Current(int balance, double rateOfInterest) {
+		super(balance);
+		this.rateOfInterest = rateOfInterest;
+	}
+	
+	double showYearlyDeduction() {
+		return balance;
+	}
+
+}

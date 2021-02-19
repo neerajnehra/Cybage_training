@@ -1,0 +1,36 @@
+package com.example;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Sort;
+
+@SpringBootApplication
+public class PaginationAndSortingApplication implements CommandLineRunner{
+
+	public static void main(String[] args) {
+		SpringApplication.run(PaginationAndSortingApplication.class, args);
+	}
+
+	@Autowired
+	EmployeeRepository er;
+	
+	
+	@Override
+	public void run(String... args) throws Exception {
+		er.save(new Employee("Neeraj","Swimming"));
+		er.save(new Employee("Rohan","Gaming"));
+		er.save(new Employee("Baba","Gaming"));
+		er.save(new Employee("Ulala","Music"));
+		er.save(new Employee("Udibaba","Gaming"));
+		er.save(new Employee("Nirma Sabun","Music"));
+		System.out.println("-------------------------");
+		er.findAll();
+		System.out.println("-------------------------");
+		System.out.println("Sorting by Hobby");
+		System.out.println(er.findAll(Sort.by(Sort.Direction.ASC, "gaming")));
+		System.out.println("Sorting by Hobby");
+	}
+
+}

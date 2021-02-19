@@ -1,0 +1,10 @@
+package com.cybage;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Regular extends Employee{
+	private int salary;
+	
+
+}

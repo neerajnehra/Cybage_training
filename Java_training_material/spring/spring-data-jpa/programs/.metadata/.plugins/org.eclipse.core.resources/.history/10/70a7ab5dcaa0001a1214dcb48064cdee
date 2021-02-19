@@ -1,0 +1,6 @@
+insert into employee values(10444, 'zddm104');
+insert into employee values(10111, 'adm101');
+insert into employee values(10222, 'bdm102');
+insert into employee values(10333, 'cdm103');
+insert into employee values(10444, 'eddm104');
+ 

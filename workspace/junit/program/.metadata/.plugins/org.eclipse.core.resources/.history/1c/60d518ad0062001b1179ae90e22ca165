@@ -1,0 +1,32 @@
+package com.cybage.junit_demo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ArithematicTest {
+	
+	Arithematic arithematic = new Arithematic();
+	
+	@Test		//@Test is used to signal that the annotated method is a test method. 
+	void testAddition() {
+		int actual = arithematic.addition(10, 20);
+		int expected = 30;
+		assertEquals(expected, actual);		//Testing for correct result.
+		//assertNotEquals(10, arithematic.addition(5, 5));	//Testing for failure.
+		assertEquals(0, arithematic.addition(0, 0));
+		assertEquals(-2, arithematic.addition(-1, -1));
+		assertEquals(20, arithematic.addition(-10, 10));
+	}
+	
+	void testSubstraction() {
+		int actual = arithematic.substraction(10, 20);
+		int expected = 30;
+		assertEquals(expected, actual);		//Testing for correct result.
+		//assertNotEquals(10, arithematic.addition(5, 5));	//Testing for failure.
+		assertEquals(0, arithematic.substraction(0, 0));
+		assertEquals(-2, arithematic.substraction(-1, -1));
+		assertEquals(20, arithematic.substraction(-10, 10));
+	}
+
+}

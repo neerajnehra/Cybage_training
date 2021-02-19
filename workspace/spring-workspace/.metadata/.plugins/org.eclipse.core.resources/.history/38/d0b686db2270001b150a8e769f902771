@@ -1,0 +1,40 @@
+package com.example;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class EmployeeController {
+
+	@Autowired
+	EmployeeRepository er;
+
+	// add employee
+	@RequestMapping(path = "/employee/{name}", method = RequestMethod.POST)
+	@ResponseBody
+	public String addEmployee(@PathVariable String name) {
+		er.save(new Employee(name));
+		return name + "added successfully";
+	}
+
+	// For getting all employee
+	@RequestMapping(path = "/employee", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Employee> displayEmployee() {
+		return er.findAll();
+	}
+
+	// For getting employee by id
+	@RequestMapping(path = "/employee/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Optional<Employee> displayEmployeeById() {
+		return er.findById(1);
+	}
+}

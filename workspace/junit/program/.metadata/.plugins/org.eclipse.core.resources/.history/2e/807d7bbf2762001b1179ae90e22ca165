@@ -1,0 +1,10 @@
+package com.cybage.junit_demo;
+
+import org.junit.platform.suite.api.SelectPackages;
+import org.junit.runner.JUnitPlatform;
+
+@RunWith(JUnitPLatform.class)
+@SelectPackages("com.cybage.junit-demo")
+public class TestSuite {
+
+}

@@ -1,0 +1,24 @@
+package com.cybage;
+
+public class SalesManager {
+	int com;
+
+	public SalesManager(String name, int salary, int com) {
+		super();
+		this.com = com;
+	}
+
+	public int getCom() {
+		return com;
+	}
+
+	public void setCom(int com) {
+		this.com = com;
+	}
+
+	@Override
+	public String toString() {
+		return "SalesManager [compensation=" + com + "]";
+	}
+	
+}

@@ -1,0 +1,8 @@
+package com.cybage;
+
+public class Main {
+	public static void main(String[] args) {
+		BankAccount ba = new BankAccount(50000);
+		Saving s = new Saving();
+	}
+}

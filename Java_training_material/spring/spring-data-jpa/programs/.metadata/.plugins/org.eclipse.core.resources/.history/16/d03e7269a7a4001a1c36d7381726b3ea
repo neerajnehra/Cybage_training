@@ -1,0 +1,25 @@
+package com.cybage;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Regular extends Employee{
+	private int salary;
+
+	public Regular() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Regular(int id, String name ) {
+		super(id, name);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Regular(int id, String name, int salary) {
+		super();
+		this.salary = salary;
+	}
+	
+
+}

@@ -1,0 +1,21 @@
+package com.cybage;
+
+public class Contract extends Employee{
+	private int rate;
+
+	public Contract() {
+		super();
+	}
+
+	public Contract(int id, String name) {
+		super(id, name);
+	}
+	public Contract(String name, int rate) {
+		super(name);
+		this.rate = rate;
+	}
+	public Contract(String name) {
+		super(name);
+	}
+	
+}

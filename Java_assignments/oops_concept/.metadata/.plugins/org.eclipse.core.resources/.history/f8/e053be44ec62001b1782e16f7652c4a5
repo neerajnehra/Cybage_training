@@ -1,0 +1,6 @@
+package com.cybage;
+
+public class Main {
+	EmployeeDetails ed = new EmployeeDetails();
+	ed.showMenu();
+}

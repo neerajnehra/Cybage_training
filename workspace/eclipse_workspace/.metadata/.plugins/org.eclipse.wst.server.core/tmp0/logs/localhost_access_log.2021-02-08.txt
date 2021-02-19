@@ -1,0 +1,9 @@
+127.0.0.1 - - [08/Feb/2021:14:42:23 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:42:29 +0530] "GET /casestudy/ HTTP/1.1" 200 135
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:42:33 +0530] "GET /casestudy/UserController/list HTTP/1.1" 200 481
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:42:34 +0530] "POST /casestudy/UserController/j_security_check HTTP/1.1" 200 670
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:42:51 +0530] "GET /casestudy/view-user.jsp HTTP/1.1" 404 173
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:43:04 +0530] "GET /casestudy/UserController/j_security_check HTTP/1.1" 200 670
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:43:29 +0530] "GET /casestudy/user/view-user.jsp HTTP/1.1" 200 481
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:44:13 +0530] "GET /casestudy/user/view-user.jsp HTTP/1.1" 200 481
+0:0:0:0:0:0:0:1 - - [08/Feb/2021:14:48:34 +0530] "GET /cybage-learning/ HTTP/1.1" 404 1094

@@ -1,0 +1,5 @@
+package com.cybage;
+
+public class Saving {
+	int rateOfInterest = 0.35;
+}

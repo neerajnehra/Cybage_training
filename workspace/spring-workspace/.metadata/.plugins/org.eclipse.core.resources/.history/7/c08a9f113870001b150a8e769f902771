@@ -1,0 +1,14 @@
+package com.example;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+	//Spring data jpa will implement all methods related to employee entity.
+	//crud --> create(save), display(find all), delete, update.
+	
+	@Query("select e from employee e where e.name = ?1")
+	public List<Employee> findEmployeeByName(String name);
+}

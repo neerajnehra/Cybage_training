@@ -1,0 +1,7 @@
+package com.cybage;
+
+public class Utility implements Printable{
+	public void printAll(Printable p[]) {
+		for(Printable)
+	}
+}

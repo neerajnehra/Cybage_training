@@ -1,0 +1,48 @@
+package com.cybage;
+
+import java.util.Scanner;
+
+public class EmployeeDetails{
+	int choice,i = 0;
+	Employee emp[] = new Employee[20];
+	Scanner scanner = new Scanner(System.in);
+	
+	public void addEmployee() {
+		System.out.println("Enter Name of employee: ");
+		String name = scanner.next();
+		System.out.println("Enter salary of employee:");
+		int sal = scanner.nextInt();
+		Employee e = new Employee(name,sal);
+		emp[i++] = e;
+	}
+	
+	public void displayEmployee(){
+		System.out.println("Employees\n");
+		for(int j=0; j<i; j++) {
+			System.out.println(j);
+			System.out.println(emp[j].toString());
+		}
+
+	}
+	public void showMenu() {
+		do {
+			System.out.println("------Menu------");
+			System.out.println("1. Enter Data\n2.Display Data\n3.Exit");
+			System.out.println("Enter your choice" );
+			choice = scanner.nextInt();
+			
+			switch (choice) {
+			  case 1:
+			    addEmployee();
+			    break;
+			  case 2:
+			    displayEmployee();
+			    break;
+			  case 3:
+				 System.exit(0);
+			  default:
+				 System.exit(0);
+			  }
+		}while(true);
+	}
+}

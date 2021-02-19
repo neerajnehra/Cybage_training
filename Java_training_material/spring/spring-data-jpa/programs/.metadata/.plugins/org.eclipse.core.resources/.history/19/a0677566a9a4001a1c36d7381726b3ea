@@ -1,0 +1,21 @@
+package com.cybage;
+
+public class Contract extends Employee{
+	private int rate;
+
+	public Contract() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Contract(int id, String name) {
+		super(id, name);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Contract(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+	
+}

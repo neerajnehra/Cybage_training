@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="inheritance-mapping-joined-table"/>
+<aop-project name="collection-example"/>
+<aop-project name="onetoone"/>
+<aop-project name="7.named-queries"/>
+<aop-project name="8.named-native-queries"/>
+<aop-project name="inheritance-mapping-single-table"/>
+<aop-project name="14.testing"/>
+<aop-project name="11.pagination-repository"/>
+<aop-project name="6.query-from-method-name"/>
+<aop-project name="4.crud-operations"/>
+<aop-project name="10.sorting"/>
+<aop-project name="12.pagination-paging-and-sorting"/>
+<aop-project name="15.dynamic-update"/>
+<aop-project name="9.query"/>
+<aop-project name="onetomany"/>
+<aop-project name="13.auditing"/>
+<aop-project name="2.first-example-with-schema"/>
+<aop-project name="3.first-example-without-schema"/>
+<aop-project name="inheritance-mapping-table-per-class"/>
+<aop-project name="1.first-example"/>
+<aop-project name="5.query-from-method-name"/>
+<aop-project name="manytomany"/>
+</aop-reference-model>

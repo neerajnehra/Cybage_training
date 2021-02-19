@@ -1,0 +1,16 @@
+package com.cybage;
+
+public class Saving extends BankAccount{
+	double balance;
+	double rateOfInterest = 0.035;
+
+	public Saving(String name, String bankName, double balance, double rateOfInterest) {
+		super(name, bankName);
+		this.balance = balance;
+		this.rateOfInterest = rateOfInterest;
+	}
+
+	double showYearlyDeduction() {
+		return balance * rateOfInterest;
+	}
+}

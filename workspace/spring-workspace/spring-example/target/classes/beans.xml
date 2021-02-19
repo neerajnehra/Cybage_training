@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean class="com.cybage.spring_example.Employee" id="emp" name="employee" init-method="myInit" destroy-method="myDestroy" lazy-init="true">
+		<property name="id" value="101"></property>
+		<property name="name" value="Neeraj-afk"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+	<bean id="address" class="com.cybage.spring_example.Address">
+		<property name="pin" value="40007"></property>
+		<property name="location" value="Pune"></property>
+	</bean>
+	<!-- Above code is same as Employee e= new Employee(101, "Neeraj"); -->
+	
+</beans>

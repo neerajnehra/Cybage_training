@@ -1,0 +1,14 @@
+package com.cybage;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+	
+	//query data from embedable table
+	List<Employee> findByAddressPin(int pin);
+	List<Employee> findByAddressCity(int pin);
+	
+	
+}

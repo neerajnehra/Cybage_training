@@ -1,0 +1,6 @@
+package com.cybage;
+
+public class Contract extends Employee{
+	private int rate;
+	
+}

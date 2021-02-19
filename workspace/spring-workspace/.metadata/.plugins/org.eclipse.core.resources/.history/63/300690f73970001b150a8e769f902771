@@ -1,0 +1,54 @@
+package com.example;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity(name = "employee")				//This will be table in database
+@Table(name = "employee")
+//@NamedQuery(name="employee.findEmployeeByName" , query = "select e from employee e where e.name = ?1")		//JPQL syntax:jpa query language.1is for first placeholder.
+//@NamedNativeQuery(name="employee.findEmployeeByName" , query = "select * from employee where name = ?1", resultClass = Employee.class)	
+public class Employee {
+	
+	@Id				//This will be primary key in database
+	@GeneratedValue(strategy = GenerationType.AUTO)		//This is for autogeneration of id.
+	@Column(name = "emp_id")
+	private int id;
+	
+	@Column(name = "emp_name")
+	private String name;
+	public Employee() {
+		super();
+	}
+	public Employee(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public Employee(String name) {
+		super();
+		this.name = name;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + "]";
+	}
+	
+}

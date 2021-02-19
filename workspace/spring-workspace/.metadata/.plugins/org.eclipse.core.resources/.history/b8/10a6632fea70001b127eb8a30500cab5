@@ -1,0 +1,19 @@
+package com.example;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Employee {
+	
+	@Id				//This will be primary key in database
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String name;
+	
+	@OneToOne
+	private Account account;
+}
