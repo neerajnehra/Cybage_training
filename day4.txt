@@ -1,0 +1,179 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+ 
+@Injectable({
+  providedIn: 'root'
+  //instance of this service will be created at the time of creating root module(app)
+  //in entire application , only single instance of courseservice will be there
+  //singleton design pattern
+})
+export class CourseService {
+ 
+  constructor(private http: HttpClient) { }
+  getCourses(): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+  }
+  getCoursesById(id:number): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/'+id)
+  }
+  postCourses(): Observable<any> {
+    return this.http.post('https://jsonplaceholder.typicode.com/posts',
+          {id:101, name:'xyz', des:'description', price: 1234, duration:2})
+  }
+  updateCourses(): Observable<any> {
+    return this.http.put('https://jsonplaceholder.typicode.com/posts',
+          {id:101, name:'xyz', des:'description', price: 1234, duration:2})
+  }
+  deleteCourses(id:number): Observable<any> {
+    return this.http.delete('https://jsonplaceholder.typicode.com/posts/'+id)
+  }
+}
+
+---------------------------------------------
+
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+ 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CourseComponent } from './course/course.component';
+import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
+import { HttpClientModule } from '@angular/common/http';
+ 
+@NgModule({
+  declarations: [
+    AppComponent,
+    CourseComponent,
+    CoursedetailsComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+-------------------------------------------------
+
+import { Component } from '@angular/core';
+ 
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'day3';
+}
+
+-------------------------------------------------------
+
+<hr>
+data received from child: {{temp}}
+<br>
+data received from child(template reference variable): {{cd.childData}}
+        {{cd.anotherProperty}}
+        dummy method: {{cd1.dummyMethod()}}
+<hr>
+<app-coursedetails [mycourses]="coursesList | async" (childDataEm)="handleChildEvent($event)" #cd #cd1></app-coursedetails>
+
+-------------------------------------------------------------
+
+import { AfterContentInit, AfterViewInit, Component, DoCheck, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Course } from '../course';
+import { CourseService } from '../course.service';
+import { CoursedetailsComponent } from '../coursedetails/coursedetails.component';
+ 
+@Component({
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.scss']
+})
+export class CourseComponent {
+ 
+  coursesList: Observable<any>
+  constructor(private cs: CourseService) {  //it will inject courseservice dependency 
+    this.coursesList = this.cs.getCourses()
+  }
+
+
+ 
+  temp
+  handleChildEvent(dt) {
+    console.log('data received from child : ' + dt)
+    this.temp = dt
+  }
+
+
+ 
+  //accessing child data using @ViewChild
+  @ViewChild(CoursedetailsComponent, { static: false }) vc: CoursedetailsComponent
+ 
+}
+
+-----------------------------------------------------------------
+
+<div class="course-container">
+    <div *ngFor="let c of mycourses" class="course">
+        <p>{{c.userId}}</p>
+        <p>{{c.title | slice: 0: 10}}</p>
+        <p>{{c.body | slice: 0: 10}}</p>
+        <p>{{c.id}}</p>
+        <p>{{c.id}}</p>
+    </div>
+</div>
+<hr>
+<button (click)="sendDataToParent()">send data to parent</button>
+
+---------------------------------------------------------------------
+
+.course-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.course{
+    border: 1px solid lightgrey;
+    box-shadow: 5px 5px darkgrey;
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+}
+
+------------------------------------------------------------------------
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+ 
+@Component({
+  selector: 'app-coursedetails',
+  templateUrl: './coursedetails.component.html',
+  styleUrls: ['./coursedetails.component.scss']
+})
+export class CoursedetailsComponent implements OnInit {
+ 
+  @Input() mycourses: any
+ 
+  constructor() { }
+ 
+  ngOnInit() {
+  }
+ 
+  @Output() childDataEm: EventEmitter<number> = new EventEmitter();
+ 
+  childData = 123
+  anotherProperty = 'this is just dummy value...'
+  sendDataToParent() {
+    //i will write code to send data to parent
+    this.childDataEm.emit(this.childData)
+  }
+  dummyMethod() {
+    return "this is just dummy method..."
+  }
+}
