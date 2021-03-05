@@ -1,0 +1,52 @@
+ts file
+
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+
+@Component({
+  selector: 'app-reactive-form',
+  templateUrl: './reactive-form.component.html',
+  styleUrls: ['./reactive-form.component.scss']
+})
+export class ReactiveFormComponent implements OnInit {
+  registrationForm!: FormGroup; 
+  constructor(private us:UserService) { }
+
+  ngOnInit(): void {
+    this.registrationForm = new FormGroup({
+      id: new FormControl('', [Validators.required, Validators.minLength(3)] ),
+      name: new FormControl('', [Validators.required, Validators.minLength(3)] ),
+      password: new FormControl('', [Validators.required, Validators.minLength(3)] ),
+      role: new FormControl('User')
+    })
+  }
+
+  registerUser(){
+    this.us.addUser(this.registrationForm.value).subscribe({
+      next: () => {
+        console.log('Successfully added user.')
+      }
+    })
+  }
+}
+
+
+html
+
+<p>reactive-form works!</p>
+<form [formGroup] = "registrationForm">
+    id: <input type="text" formControlName="id">
+    <div *ngIf="registrationForm.controls.id?.invalid && registrationForm.controls.id?.touched" [ngStyle]="{'color': 'red'}">Id is not valid.</div>
+    <br>
+    Name: <input type="text" formControlName="name">
+    <div *ngIf="registrationForm.controls.name?.invalid && registrationForm.controls.name?.touched" [ngStyle]="{'color': 'red'}">Enter full Name</div>
+    <br>
+    Password: <input type="text" formControlName="password">
+    <div *ngIf="registrationForm.controls.password?.invalid && registrationForm.controls.password?.touched" [ngStyle]="{'color': 'red'}">Password not valid.</div>
+    <br>
+    Role: <input type="text" formControlName="role">
+    <br>
+    <input type="submit" value="register" (click)="registerUser()">
+    <br>
+</form>
